@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0b0e14">
+<title>APARICHIT — Chapter 1: Ambi</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0e14'/%3E%3Ctext x='32' y='44' font-size='36' text-anchor='middle' fill='%23e8b64c' font-family='serif'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="game-canvas"></canvas>
+  <!-- vignette + order pulse overlay -->
+  <div id="vignette"></div>
+  <div id="fade"></div>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div id="objective-panel">
+      <div id="objective-title">MORNING ROUTINE</div>
+      <div id="objective-text">Turn off the alarm</div>
+      <div id="objective-count">1 / 8</div>
+    </div>
+    <div id="prompt" class="hidden"><span id="prompt-key">E</span><span id="prompt-text">Interact</span></div>
+    <div id="subtitle" class="hidden"></div>
+    <div id="toast" class="hidden"></div>
+    <div id="gamepad-hint" class="hidden">🎮 Gamepad connected — Left stick move · Right stick camera · A interact · Start pause</div>
+    <div id="scene-label" class="hidden"></div>
+  </div>
+
+  <!-- Touch controls -->
+  <div id="touch-ui" class="hidden">
+    <div id="stick-zone"><div id="stick-base"><div id="stick-knob"></div></div></div>
+    <div id="look-zone"></div>
+    <div id="touch-buttons">
+      <button id="btn-interact" class="tbtn tbtn-big">E<span>INTERACT</span></button>
+      <button id="btn-run" class="tbtn">🏃<span>RUN</span></button>
+      <button id="btn-pause-t" class="tbtn">II<span>PAUSE</span></button>
+    </div>
+    <button id="btn-touch-hide" title="Hide touch controls">×</button>
+  </div>
+  <button id="btn-touch-show" class="hidden" title="Show touch controls">🎮</button>
+
+  <div id="rotate-msg" class="hidden">↻ Rotate your phone to <b>landscape</b> for the best experience.</div>
+
+  <!-- Menus -->
+  <div id="menu" class="screen">
+    <div class="menu-card">
+      <h1 class="game-title">APARICHIT</h1>
+      <h2 class="chapter-title">CHAPTER 1 — AMBI</h2>
+      <p class="menu-sub">An ordinary morning. An orderly man.</p>
+      <div class="menu-buttons">
+        <button id="btn-start" class="mbtn primary">▶ &nbsp;New Morning</button>
+        <button id="btn-continue" class="mbtn hidden">Continue</button>
+        <button id="btn-how" class="mbtn">How to Play</button>
+      </div>
+      <div class="menu-row">
+        <label>Quality
+          <select id="quality-select">
+            <option value="auto" selected>Auto</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </label>
+        <label class="mute-label"><input type="checkbox" id="mute-check"> Mute</label>
+      </div>
+      <div id="howto" class="hidden">
+        <p><b>⌨️ Keyboard+Mouse:</b> WASD move · Mouse look (click to lock) · Shift run · E interact · Esc pause</p>
+        <p><b>🎮 Gamepad:</b> Left stick move · Right stick camera · A interact · L3 run · Start pause</p>
+        <p><b>📱 Touch:</b> Left stick move · swipe right side to look · INTERACT / RUN buttons</p>
+      </div>
+      <p class="menu-foot">Best in landscape · sound on recommended · v1.0 prototype</p>
+    </div>
+  </div>
+
+  <div id="pause-menu" class="screen hidden">
+    <div class="menu-card">
+      <h1 class="game-title small">PAUSED</h1>
+      <div class="menu-buttons">
+        <button id="btn-resume" class="mbtn primary">Resume</button>
+        <button id="btn-restart" class="mbtn">Restart Chapter</button>
+        <button id="btn-quit" class="mbtn">Main Menu</button>
+      </div>
+      <div class="menu-row">
+        <label>Quality
+          <select id="quality-select-2">
+            <option value="auto" selected>Auto</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </label>
+        <label class="mute-label"><input type="checkbox" id="mute-check-2"> Mute</label>
+      </div>
+    </div>
+  </div>
+
+  <div id="intro" class="screen hidden">
+    <div id="intro-text">APARICHIT</div>
+    <div id="intro-sub" class="hidden">CHAPTER 1 — AMBI</div>
+    <button id="btn-skip" class="mbtn small">Skip ›</button>
+  </div>
+
+  <div id="complete" class="screen hidden">
+    <div class="menu-card center">
+      <h1 class="game-title">CHAPTER 1 COMPLETE</h1>
+      <p class="menu-sub">More of Ambi's story will unfold…</p>
+      <button id="btn-back-menu" class="mbtn primary">Return to Main Menu</button>
+    </div>
+  </div>
+
+  <div id="loading" class="screen hidden"><div class="loader"></div><p>Opening Ambi's house…</p></div>
+</div>
+<script type="importmap">{ "imports": { "three": "./lib/three.module.js" } }</script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
